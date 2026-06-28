@@ -203,7 +203,7 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Method Overview</h2>
-        <div class="publication-video" style="padding-bottom: 26%;">
+        <div class="publication-video" style="padding-bottom: 34%;">
           <img src="static/images/SkyReg-Teaser.jpg" />
         </div>
         <div class="content has-text-justified">
@@ -222,23 +222,23 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            Tables show that our method consistently outperforms retrieval-based and homography-based baselines by a large margin in both 
+            the pixel-wise and center-pixel geodetic error and recall. Relative to the strongest competing baseline (RoMa), we reduce the 
+            pixel-wise geodetic error by 88.18 m and 90.76 m in the Urban and Suburban splits, respectively. On the center-pixel evaluation 
+            we observe a similar trend, reporting 68.30 m and 66.26 m lower error than RoMa. Recall exhibits the same trend: SkyReg 
+            registers a substantially larger fraction of images across all distance thresholds, indicating robust behavior rather than gains 
+            concentrated on a small subset of easy examples.
+          </p>
+        </div>
         <div class="publication-video" style="padding-bottom: 23%;">
           <img src="static/images/SkyReg-res1.png" />
         </div>
         <div class="content has-text-justified">
           <p>
-            Cross-view geo-registration is the task of aligning a query image to a geodetically accurate reference (e.g., satellite image), 
-            so that each query pixel maps to a real-world GPS coordinate. Most existing work addresses the related problem of cross-view 
-            geo-localization, where the goal is typically to estimate the camera center using retrieval, classification, matching, or 
-            regression. Because these approaches do not provide dense supervision, they are poorly suited for learning and evaluating pixel-
-            wise alignment. We introduce SkyReg, a geometry-aware geo-registration model that estimates the transformation between the query
-            and reference images by explicitly modeling the 3D scene geometry. Applying this transformation to warp the query into the 
-            reference frame yields pixel-wise geo-localization, without relying on 2D point matches, and remains robust to occlusions and 
-            large viewpoint changes. To enable training and standardized evaluation, we release (i) SkyReg-130k, a large-scale dataset of 
-            drone–satellite images annotated with per-pixel GPS co-ordinates, depth maps, and camera parameters derived from LiDAR and 
-            structure-from-motion, and (ii) SkyReg-Bench, a held-out benchmark of unseen Urban and Suburban scenes with the same dense 
-            annotations. SkyReg achieves state-of-the-art performance against strong retrieval and homography baselines, demonstrating the 
-            value of geometry-aware models and dense geodetic benchmarks for cross-view geo-registration.
+            Table shows pixel-wise georegistration performance on the Urban and Suburban benchmarks. We report the geodesic error (GE) in 
+            meters, and the recall of images registered correctly under τ as a percentage.
           </p>
         </div>
         <div class="publication-video" style="padding-bottom: 31%;">
@@ -246,18 +246,8 @@
         </div>
         <div class="content has-text-justified">
           <p>
-            Cross-view geo-registration is the task of aligning a query image to a geodetically accurate reference (e.g., satellite image), 
-            so that each query pixel maps to a real-world GPS coordinate. Most existing work addresses the related problem of cross-view 
-            geo-localization, where the goal is typically to estimate the camera center using retrieval, classification, matching, or 
-            regression. Because these approaches do not provide dense supervision, they are poorly suited for learning and evaluating pixel-
-            wise alignment. We introduce SkyReg, a geometry-aware geo-registration model that estimates the transformation between the query
-            and reference images by explicitly modeling the 3D scene geometry. Applying this transformation to warp the query into the 
-            reference frame yields pixel-wise geo-localization, without relying on 2D point matches, and remains robust to occlusions and 
-            large viewpoint changes. To enable training and standardized evaluation, we release (i) SkyReg-130k, a large-scale dataset of 
-            drone–satellite images annotated with per-pixel GPS co-ordinates, depth maps, and camera parameters derived from LiDAR and 
-            structure-from-motion, and (ii) SkyReg-Bench, a held-out benchmark of unseen Urban and Suburban scenes with the same dense 
-            annotations. SkyReg achieves state-of-the-art performance against strong retrieval and homography baselines, demonstrating the 
-            value of geometry-aware models and dense geodetic benchmarks for cross-view geo-registration.
+            Table shows center-pixel geo-localization performance on Urban and Suburban benchmarks. We report the geodesic error (GE) in 
+            meters, and the recall of images geolocated correctly under τ as a percentage
           </p>
         </div>
         <div class="publication-video" style="padding-bottom: 68%;">
@@ -265,18 +255,12 @@
         </div>
         <div class="content has-text-justified">
           <p>
-            Cross-view geo-registration is the task of aligning a query image to a geodetically accurate reference (e.g., satellite image), 
-            so that each query pixel maps to a real-world GPS coordinate. Most existing work addresses the related problem of cross-view 
-            geo-localization, where the goal is typically to estimate the camera center using retrieval, classification, matching, or 
-            regression. Because these approaches do not provide dense supervision, they are poorly suited for learning and evaluating pixel-
-            wise alignment. We introduce SkyReg, a geometry-aware geo-registration model that estimates the transformation between the query
-            and reference images by explicitly modeling the 3D scene geometry. Applying this transformation to warp the query into the 
-            reference frame yields pixel-wise geo-localization, without relying on 2D point matches, and remains robust to occlusions and 
-            large viewpoint changes. To enable training and standardized evaluation, we release (i) SkyReg-130k, a large-scale dataset of 
-            drone–satellite images annotated with per-pixel GPS co-ordinates, depth maps, and camera parameters derived from LiDAR and 
-            structure-from-motion, and (ii) SkyReg-Bench, a held-out benchmark of unseen Urban and Suburban scenes with the same dense 
-            annotations. SkyReg achieves state-of-the-art performance against strong retrieval and homography baselines, demonstrating the 
-            value of geometry-aware models and dense geodetic benchmarks for cross-view geo-registration.
+            For each example, we warp the query drone image into the geodetically accurate satellite reference frame and visualize the 
+            overlay in green. From left to right: (1) query drone image, (2) ground-truth warp obtained using the ground-truth depth map and 
+            camera parameters, (3) RoMa result (homography-based), and (4) SkyReg (ours). RoMa often fails under large cross-view viewpoint/
+            scale changes; even when successful, a single planar homography cannot model parallax, leading to stretching or shearing of 
+            elevated structures. In contrast, SkyReg’s 3D-aware warping more closely matches the ground-truth alignment and naturally 
+            respects occlusions, producing sharper, geometrically consistent overlays.
           </p>
         </div>
       </div>
